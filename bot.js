@@ -21,7 +21,7 @@ function respond() {
       np = /\.*np\.*/i;
       lorn = /\.*lauren\.*/i;
 	  leatherMan = /\.*fuck you\.*/i;
-	  prettyQuick = /\.*quick\.*/i;
+	  fastOnMyFeet = /\.*quick\.*/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -47,7 +47,7 @@ function respond() {
 	this.res.writeHead(200);
     postMessage(6);
 	this.res.end();
-  } else if (request.text && prettyQuick.test(request.text)){
+  } else if (request.text && fastOnMyFeet.test(request.text)){
 	this.res.writeHead(200);
 	postMessage(7);
 	this.res.end();
