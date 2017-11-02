@@ -2,8 +2,7 @@
 
 ## Introduction
 
-This project shows the capability of a bot to react to messages sent within a group.
-
+This project shows the capability of a bot to react to messages sent within a group. Also proves without a doubt that Matt Broman is not only a conspirator of Emperor Palpatine, but is best friends with Nick Chimichanga and that Terminus the means by which he shows his affection. 
 ## Contents
 
   * [Quickly get our sample bot up and running in your groups](#deploy)
