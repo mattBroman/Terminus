@@ -45,6 +45,7 @@ function respond() {
   } else if (request.text && leatherMan.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(6);
+	this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
