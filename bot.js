@@ -21,7 +21,7 @@ function respond() {
       np = /\.*np\.*/i;
       lorn = /\.*lauren\.*/i;
 	  leatherMan = /\.*fuck you\.*/i;
-	  fastOnMyFeet = /\.*quick\.*/i;
+	  fastOnMyFeet = /quick/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
