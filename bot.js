@@ -15,6 +15,7 @@ function respond() {
       botRegex = /haha/,
       nickToNicc = /\.*nick\.*/i;
       copyPasta = /\.*@Terminus\.*/i;
+      np = /\.*np\.*/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -27,6 +28,10 @@ function respond() {
   } else if (request.text && copyPasta.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(3);
+    this.res.end();
+  } else if (request.text && np.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(4);
     this.res.end();
   } else {
     console.log("don't care");
@@ -47,6 +52,9 @@ function postMessage(option) {
 	break;
   case 3:
 	botResponse = CopyPastas[Math.floor(Math.random() * CopyPastas.length)];
+	break;
+  case 4:
+	botResponse = 'discovered';
 	break;
   }
 
