@@ -20,8 +20,6 @@ function respond() {
       copyPasta = /\.*@Terminus\.*/i;
       np = /\.*np\.*/i;
       lorn = /\.*lauren\.*/i;
-	  leatherMan = /\.*fuck you\.*/i;
-	  fastOnMyFeet = /quick/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -43,14 +41,6 @@ function respond() {
 	this.res.writeHead(200);
     postMessage(5);
     this.res.end();
-  } else if (request.text && leatherMan.test(request.text)) {
-	this.res.writeHead(200);
-    postMessage(6);
-	this.res.end();
-  } else if (request.text && fastOnMyFeet.test(request.text)){
-	this.res.writeHead(200);
-	postMessage(7);
-	this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -76,12 +66,6 @@ function postMessage(option) {
 	break;
   case 5:
 	botResponse = '*lorn';
-	break;
-  case 6:
-    botResponse = 'no, fuck you leather man';
-	break;
-  case 7:
-    botResponse = 'yeah, I\'m pretty quick, pretty fast on my feet';
 	break;
   }
 
