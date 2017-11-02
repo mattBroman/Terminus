@@ -86,7 +86,7 @@ function postMessage(option) {
 	botResponse = 'dude XD';
 	break;
   case 7:
-	botResponse = 'new is better, nicc';
+	botResponse = 'new is better, nick';
 	break;
   case 8:
 	botResponse = 'salami allocator';
