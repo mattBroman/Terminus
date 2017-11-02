@@ -8,11 +8,11 @@ function respond() {
       botRegex = /haha/,
       nickToNicc = / \.*nick\.* /;
 
-  if(request.text && botRegex.test(request.text))) {
+  if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(1);
     this.res.end();
-  } else if (request.text && nickToNicc.test(request.text) {
+  } else if (request.text && nickToNicc.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(2);
     this.res.end();
