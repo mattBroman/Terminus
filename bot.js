@@ -5,11 +5,16 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /haha/;
+      botRegex = /haha/,
+      nickToNicc = / \.*nick\.* /;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    postMessage(1);
+    this.res.end();
+  } else if (request.text && nickToNicc.test(request.text) {
+	this.res.writeHead(200);
+    postMessage(2);
     this.res.end();
   } else {
     console.log("don't care");
@@ -18,10 +23,17 @@ function respond() {
   }
 }
 
-function postMessage() {
+function postMessage(option) {
   var botResponse, options, body, botReq;
-
-  botResponse = cool();
+  
+  switch(option) {
+  case 1 :
+    botResponse = cool();
+    break;
+  case 2:
+	botResponse = '*nicc';
+	break;
+  }
 
   options = {
     hostname: 'api.groupme.com',
