@@ -7,7 +7,10 @@ var CopyPastas = [
 'If my girl👧😍 and my beyblades💯🔥 are both drowning🌊😦 and I could only save one😄☝️️ you can Catch me letting it rip at my girls funeral😅👻💀 Cause it\'s bey blade or catch a fade my nigga🙏👊 😠💯😭',
 'My teacher said to my I\'m a failure, that I\'ll never amount to anything. I scoffed at him. Shocked, my teacher asked what\'s so funny, my future is on the line. "Well...you see professor" I say as the teacher prepares to laugh at my answer, rebuttal at hand. "I watch Rick and Morty." The class is shocked, they merely watch pleb shows like the big bang theory to feign intelligence, not grasping the humor. "...how? I can\'t even understand it\'s sheer nuance and subtlety." "Well you see...WUBBA LUBBA DUB DUB!" One line student laughs in the back, I turn to see a who this fellow genius is. It\'s none other than Albert Einstein.',
 'What you guys have no Szechuan sauce? I WANT SZECHUAN SAUCE! WHERE\'S MY SZECHUAN SAUCE??!! I\'M PICKLE RICK!!!!!!!! WUBBALUBBADUBDUB!!!!!! I\'M PICKLE RICK!!!! REEEEEEEEE!!!! REEEEE!!!! REEEEE!!!! IM PICKLE REEEEEEEEE!!!! REEEEEE!!!!! REEEEE!!!!!!',
-'DUUUUUUUUUUUUUUUUUUUUUUUUUUUUDE DUDE DUDE DUDE DUDE DUDE DUDE DUDE FUCKING WEEEEEEEEED AHAHAHAHAHAHAHA DUDE!!!!!!!!!! WEED!!!!!!!!!!!! hits bong FUCKING DUUUUUUDE that WEEED like just...................DUDE LMFFFFFAAAAAAOOOO i am so fucking HIGH on WEED right now XD WEEEEEEEEEEEEEEEEEEEEEEEEEEEED holla my DUDE!!!!!!!!!!!!!!JUST.........ROLL................MY.......................JOINT......................UP........................................AYYYYYYYYYYYYYYYYY DANK DANK DANK WEED'
+'DUUUUUUUUUUUUUUUUUUUUUUUUUUUUDE DUDE DUDE DUDE DUDE DUDE DUDE DUDE FUCKING WEEEEEEEEED AHAHAHAHAHAHAHA DUDE!!!!!!!!!! WEED!!!!!!!!!!!! hits bong FUCKING DUUUUUUDE that WEEED like just...................DUDE LMFFFFFAAAAAAOOOO i am so fucking HIGH on WEED right now XD WEEEEEEEEEEEEEEEEEEEEEEEEEEEED holla my DUDE!!!!!!!!!!!!!!JUST.........ROLL................MY.......................JOINT......................UP........................................AYYYYYYYYYYYYYYYYY DANK DANK DANK WEED',
+'Hey excuse, big guy, did you hear some noises going on in here? A couple minutes ago? I was in the other room working out. Yeah, I just finished wrestling some jabroni here and ehh... knocked him out. Jabroni? Yeah some guy just wanted to challenge me to a wrestling match, so I took him out 1 2 3. No no, well nothin, whats with the whole jabroni thing? I mean Im half italian. Well ohhh, this guy thought he was pretty tough, though he could take me, so I took a couple of rounds outta him. Well most italians do think theyre pretty tough, I think Im pretty tough. You think your pretty tough? Well, just had a match so, you know, Im pretty tired and I could go another round if thats what your into. Listen, I was in the other room, and if thats what you call a match, I got news for you buddy you aint had nothin like me.',
+'Well maybe you and I should settle it then. Are you sure you know what your getting yourself into? Well, I gotta get my haircut in about half an hour, so I got some time. Well you can do that after you get outta the hospital. Well lets give it a go, your a pretty big guy. Yeah Im a pretty big guy, Im slow. Ohh but Im pretty quick so. What do you want to bet for? I dont know, what ever you want, you pick. Ill tell you what, lets uh, lets bet your ass. I win, I get your ass, hows that sound? Yeah? What, you gonna fuck me in the ass? Is that what you mean? If you want me to, you know. Well, what ever you wanna do, if thats what you want to do, you think you can beat me in 1 2 3, yeah you can fuck me in the ass, well go. You know what, youve talked too much shit, Im a Romen-Greco wrestler, you wanna just start off right now? Sure, you wanna go lil-Greco? All right lets go! Ah you like to start on bottom. You wanna get on bottom? You know thats the point you wanna be. All right lets see what you got come on man!'
+'Hey buddy, I think youve got the wrong door, the leather clubs two blocks down. Fuck↗You↘ Oh, Fuck♂You leather man. Maybe you and I should settle it right here on the ring if you think your so tough. Oh yea? Ill kick your ass! Ha! Yeah right man. Lets go! Why dont you get out of that leather stuff? Ill strip down out of this and well settle it right here in the ring. What do you say? Yeah, no problem buddy! You got it. Get out of that uh, jabroni outfit. Yeah, smart ass. Ill show you whos the boss of this gym.'
 ];
 
 function respond() {
@@ -16,6 +19,7 @@ function respond() {
       nickToNicc = /\.*nick\.*/i;
       copyPasta = /\.*@Terminus\.*/i;
       np = /\.*np\.*/i;
+      lorn = /\.*[l||L]auren\.*/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -32,6 +36,10 @@ function respond() {
   } else if (request.text && np.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(4);
+    this.res.end();
+  } else if (request.text && lorn.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(5);
     this.res.end();
   } else {
     console.log("don't care");
@@ -55,6 +63,9 @@ function postMessage(option) {
 	break;
   case 4:
 	botResponse = 'discovered';
+	break;
+  case 5:
+	botRespone = '*lorn';
 	break;
   }
 
