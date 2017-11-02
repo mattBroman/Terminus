@@ -19,7 +19,7 @@ function respond() {
       nickToNicc = /\.*nick\.*/i;
       copyPasta = /\.*@Terminus\.*/i;
       np = /\.*np\.*/i;
-      lorn = /\.*[l||L]auren\.*/;
+      lorn = /\.*lauren\.*/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
