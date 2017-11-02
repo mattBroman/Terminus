@@ -21,6 +21,7 @@ function respond() {
       np = /\.*np\.*/i;
       lorn = /\.*lauren\.*/i;
       lmao = /\.*lmao\.*/i;
+      malloc = /\.*malloc\.*/i
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -45,6 +46,10 @@ function respond() {
   } else if (request.text && lmao.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(6);
+    this.res.end();
+  } else if (request.text && malloc.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(7);
     this.res.end();
   } else {
     console.log("don't care");
@@ -74,6 +79,9 @@ function postMessage(option) {
 	break;
   case 6:
 	botResponse = 'dude XD';
+	break;
+  case 7:
+	botResponse = 'new is better, nicc';
 	break;
   }
 
