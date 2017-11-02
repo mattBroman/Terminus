@@ -21,6 +21,7 @@ function respond() {
       np = /\.*np\.*/i;
       lorn = /\.*lauren\.*/i;
 	  leatherMan = /\.*fuck you\.*/i;
+	  prettyQuick = /\.*quick\.*/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -45,6 +46,10 @@ function respond() {
   } else if (request.text && leatherMan.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(6);
+	this.res.end();
+  } else if (request.text && prettyQuick.test(request.text)){
+	this.res.writeHead(200);
+	postMessage(7);
 	this.res.end();
   } else {
     console.log("don't care");
@@ -74,6 +79,9 @@ function postMessage(option) {
 	break;
   case 6:
     botResponse = 'no, fuck you leather man';
+	break;
+  case 7:
+    botResponse = 'yeah, I\'m pretty quick, pretty fast on my feet';
 	break;
   }
 
