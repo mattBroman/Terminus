@@ -20,6 +20,7 @@ function respond() {
       copyPasta = /\.*@Terminus\.*/i;
       np = /\.*np\.*/i;
       lorn = /\.*lauren\.*/i;
+      lmao = /\.*lmao\.*/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -40,6 +41,10 @@ function respond() {
   } else if (request.text && lorn.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(5);
+    this.res.end();
+  } else if (request.text && lmao.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(6);
     this.res.end();
   } else {
     console.log("don't care");
@@ -66,6 +71,9 @@ function postMessage(option) {
 	break;
   case 5:
 	botResponse = '*lorn';
+	break;
+  case 6:
+	botResponse = 'dude XD';
 	break;
   }
 
