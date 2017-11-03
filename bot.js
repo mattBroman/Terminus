@@ -23,6 +23,8 @@ function respond() {
       lmao = /\.*lmao\.*/i;
       malloc = /\.*malloc\.*/i;
       salami = /\.*mp\d\.*/i;
+      bulge = /\.*bulge\.*/i
+      OwO = /\.*owo\.*/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -55,6 +57,13 @@ function respond() {
   } else if (request.text && salami.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(8);
+    this.res.end();
+  } else if (request.text && bulge.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(9);
+  } else if (request.text && OwO.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(10);
     this.res.end();
   } else {
     console.log("don't care");
@@ -90,6 +99,12 @@ function postMessage(option) {
 	break;
   case 8:
 	botResponse = 'salami allocator';
+	break;
+  case 9:
+	botResponse = 'OwO';
+	break;
+  case 10:
+	botResponse = 'what\'s this?';
 	break;
   }
 
