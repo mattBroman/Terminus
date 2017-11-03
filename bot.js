@@ -25,6 +25,7 @@ function respond() {
       salami = /\.*mp\d\.*/i;
       bulge = /\.*bulge\.*/i
       OwO = /\.*owo\.*/i;
+      realNiggaHours = /\.*real nigga hours\.*/i
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -64,6 +65,10 @@ function respond() {
   } else if (request.text && OwO.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(10);
+    this.res.end();
+  } else if (request.text && OwO.realNiggaHours(request.text)) {
+	this.res.writeHead(200);
+    postMessage(11);
     this.res.end();
   } else {
     console.log("don't care");
@@ -105,6 +110,9 @@ function postMessage(option) {
 	break;
   case 10:
 	botResponse = 'what\'s this?';
+	break;
+  case 11:
+	botResponse = 'ｗｈｏ ｔｆ ｕｐ??? ｓｍａｓｈ ｔｈａｔ ｍｆ\'ｉｎ ｌｉｋｅ ｎｉｇｇａ';
 	break;
   }
 
