@@ -66,7 +66,7 @@ function respond() {
 	this.res.writeHead(200);
     postMessage(10);
     this.res.end();
-  } else if (request.text && OwO.realNiggaHours(request.text)) {
+  } else if (request.text && realNiggaHours.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(11);
     this.res.end();
