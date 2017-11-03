@@ -15,7 +15,7 @@ var CopyPastas = [
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /haha/,
+      botRegex = /haha/i,
       nickToNicc = /\.*nick\.*/i;
       copyPasta = /\.*@Terminus\.*/i;
       np = /\.*np\.*/i;
