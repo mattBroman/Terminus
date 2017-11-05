@@ -14,6 +14,18 @@ var CopyPastas = [
 '🚨🚨🚨 WEE WOO WEE WOO WEE WOO 🚨🚨🚨 YOU ARE BEING DETAINED 👮🏻👮🏻👮🏻 FOR BEING AWAKE DURING REAL NIGGA HOURS 🕐👌🏻😏 PLEASE SHOW ME YOUR REAL NIGGA REGISTRATION 🙏🏻📝 BY SMASHING THE MOTHAFUCCIN LIKE BUTTON 🙊🙌🏼🔥🔥 REAL NIGGAS ONLY!! IT DONT MATTER IF YOU UP TRAPPING OR WHAT 💦💦😩😩💯💯💯🚨🚨🚨 WEE WOO WEE WOO WEE WOO 🚨🚨🚨 YOU ARE BEING DETAINED 👮🏻👮🏻👮🏻 FOR BEING AWAKE DURING REAL NIGGA HOURS 🕐👌🏻😏 PLEASE SHOW ME YOUR REAL NIGGA REGISTRATION 🙏🏻📝 BY SMASHING THE MOTHAFUCCIN LIKE BUTTON 🙊🙌🏼🔥🔥 REAL NIGGAS ONLY!! IT DONT MATTER IF YOU UP TRAPPING OR WHAT 💦💦😩😩💯💯💯'
 ];
 
+var chasePastas = [
+'How many times do I have to tell you I don\'t give a shit about the bounded buffer right now',
+'I\'m done in this chat for a bit',
+'also, I fixed it, no thanks to you',
+'That is wrong. Do you agree?',
+'I don\'t know how I can be any clearer. I DONT CARE ABOUT THE BUFFER RIGHT NOW',
+'Okay, fine, but that\'s not my problem right now',
+'Thanks for giving us a fucked API.',
+'Forgive me for assuming that you\'d at least write a "getSize" function correctly. Apparently you can\'t even do that right.',
+'Alright, I apologize to everyone for what happened earlier.\n\nBut show\'s over, let\'s all agree to be civil and keep this groupme as simply a place where we can ask each other for help and not worry about the formalities.\n\nAt this point, I\'d like to ask everyone that isn\'t in this class to please leave the groupme.'
+];
+
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /haha/i,
@@ -26,7 +38,8 @@ function respond() {
       salami = /\.*mp\d\.*/i;
       bulge = /\.*bulge\.*/i
       OwO = /\.*owo\.*/i;
-      realNiggaHours = /\.*real nigga hours\.*/i
+      realNiggaHours = /\.*real nigga hours\.*/i;
+	  chaseQuote = /\.*@chase\.*/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -71,6 +84,10 @@ function respond() {
 	this.res.writeHead(200);
     postMessage(11);
     this.res.end();
+  } else if (request.text && chaseQuote.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(12);
+    this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -114,6 +131,9 @@ function postMessage(option) {
 	break;
   case 11:
 	botResponse = 'ｗｈｏ ｔｆ ｕｐ??? ｓｍａｓｈ ｔｈａｔ ｍｆ\'ｉｎ ｌｉｋｅ ｎｉｇｇａ';
+	break;
+  case 12:
+	botResponse = chasePastas[Math.floor(Math.random() * chasePastas.length)];
 	break;
   }
 
