@@ -41,7 +41,6 @@ function respond() {
       OwO = /\.*owo\.*/i;
       realNiggaHours = /\.*real nigga hours\.*/i;
 	    chaseQuote = /\.*@chase\.*/i;
-      juan = /\.*juan\.*/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -90,10 +89,6 @@ function respond() {
 	this.res.writeHead(200);
     postMessage(12);
     this.res.end();
-  } else if (request.text && juan.test(request.text)) {
-  this.res.writeHead(200);
-    postMessage(13);
-    this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -140,9 +135,8 @@ function postMessage(option) {
 	break;
   case 12:
 	botResponse = chasePastas[Math.floor(Math.random() * chasePastas.length)];
-  case 13:
-  botResponse = '*Juanathan Tyler';
 	break;
+
   }
 
   options = {
