@@ -40,7 +40,9 @@ function respond() {
       bulge = /\.*bulge\.*/i
       OwO = /\.*owo\.*/i;
       realNiggaHours = /\.*real nigga hours\.*/i;
-	    chaseQuote = /\.*@chase\.*/i;
+	  chaseQuote = /\.*@chase\.*/i;
+	  leilani = /\.*leilani\.*/i
+	
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -88,6 +90,10 @@ function respond() {
   } else if (request.text && chaseQuote.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(12);
+    this.res.end();  
+  } else if (request.text && leilani.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(13);
     this.res.end();
   } else {
     console.log("don't care");
@@ -135,6 +141,9 @@ function postMessage(option) {
 	break;
   case 12:
 	botResponse = chasePastas[Math.floor(Math.random() * chasePastas.length)];
+	break;
+  case 13:
+	botResponse = 'layylani*';
 	break;
 
   }
