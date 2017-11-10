@@ -143,7 +143,7 @@ function postMessage(option) {
 	botResponse = chasePastas[Math.floor(Math.random() * chasePastas.length)];
 	break;
   case 13:
-	botResponse = 'layylani*';
+	botResponse = 'layluh*';
 	break;
 
   }
