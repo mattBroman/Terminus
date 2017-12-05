@@ -70,6 +70,7 @@ function respond() {
 	  chaseQuote = /\.*@chase\.*/i;
 	  leilani = /\.*leilani\.*/i
 	  nikkQuote = /\.*@nikk\.*/i
+	  ocelot = /\.*pretty good\.*/i
 	
 
   if(request.text && botRegex.test(request.text)) {
@@ -127,6 +128,10 @@ function respond() {
 	this.res.writeHead(200);
     postMessage(14);
     this.res.end();
+  } else if (request.text && ocelot.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(15);
+    this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -179,6 +184,9 @@ function postMessage(option) {
 	break;
   case 14:
 	botResponse = nikkPastas[Math.floor(Math.random() * nikkPastas.length)];;
+	break;
+  case 15:
+	botResponse = 'https://i.redd.it/qr97nfztrkjx.gif';
 	break;
 
   }
