@@ -54,6 +54,8 @@ var nikkPastas = [
 
 ];
 
+var squareRoot = "float Q_rsqrt( float number )\n{\tlong i;\n\tfloat x2, y;\n\tconst float threehalfs = 1.5F;\n\n\tx2 = number * 0.5F;\n\ty  = number;\n\ti  = * ( long * ) &y;                     // evil floating point bit level hacking\n \ti  = 0x5f3759df - ( i >> 1 );               // what the fuck?\n  \ty  = * ( float * ) &i;\n \ty  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration\n //	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed\n \treturn y;\n }"
+
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /haha/i,
@@ -71,6 +73,7 @@ function respond() {
 	  leilani = /\.*leilani\.*/i
 	  nikkQuote = /\.*@nikk\.*/i
 	  ocelot = /\.*pretty good\.*/i
+	  fastInv = /\.*fast(-|\s)?inverse square root\.*/i
 	
 
   if(request.text && botRegex.test(request.text)) {
@@ -131,6 +134,10 @@ function respond() {
   } else if (request.text && ocelot.test(request.text)) {
 	this.res.writeHead(200);
     postMessage(15);
+    this.res.end();  
+  } else if (request.text && fastInv.test(request.text)) {
+	this.res.writeHead(200);
+    postMessage(16);
     this.res.end();
   } else {
     console.log("don't care");
@@ -188,7 +195,9 @@ function postMessage(option) {
   case 15:
 	botResponse = 'https://i.redd.it/qr97nfztrkjx.gif';
 	break;
-
+  case 16:
+	botResponse = squareRoot;
+	break;
   }
 
   options = {
