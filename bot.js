@@ -69,11 +69,12 @@ function respond() {
       bulge = /\.*bulge\.*/i
       OwO = /\.*owo\.*/i;
       realNiggaHours = /\.*real nigga hours\.*/i;
-	  chaseQuote = /\.*@chase\.*/i;
-	  leilani = /\.*leilani\.*/i
-	  nikkQuote = /\.*@nikk\.*/i
-	  ocelot = /\.*pretty good\.*/i
-	  fastInv = /\.*fast(-|\s)?inverse square root\.*/i
+      chaseQuote = /\.*@chase\.*/i;
+      leilani = /\.*leilani\.*/i;
+      nikkQuote = /\.*@nikk\.*/i;
+      ocelot = /\.*pretty good\.*/i;
+      fastInv = /\.*fast(-|\s)?inverse square root\.*/i;
+      nanomachines = /\.nanomachines\.*/i;
 	
 
   if(request.text && botRegex.test(request.text)) {
@@ -139,6 +140,10 @@ function respond() {
 	this.res.writeHead(200);
     postMessage(16);
     this.res.end();
+    } else if (request.text && nanomachines.test(request.text)) {
+      this.res.writeHead(200);
+      postMessage(17);
+    this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -198,6 +203,10 @@ function postMessage(option) {
   case 16:
 	botResponse = squareRoot;
 	break;
+  case 17:
+	botResponse = 'No Snake, The Nanomachines are functioning fine. It must be pycometric interferance from pycomantis!'
+	break;
+		  
   }
 
   options = {
