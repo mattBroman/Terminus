@@ -28,6 +28,14 @@ var chasePastas = [
 'homework due at 11:59 pm\nStarts homework at 11:30 pm\nTurns homework in at 11:59 pm'
 ];
 
+var jcPastas = [
+'I know your UNATCO killphrase: Laputan Machine.',
+'You mechs may have copper wiring to reroute your fear of pain, but I\'ve got nerves of steel.',
+'You came all the way to Paris to tell me that?',
+'I like to make a silent take down, give me the GEP gun',
+'I heard you can get me inside'
+];
+
 var nikkPastas = [
 'Reminds me of how a lot of people bitched about having Hyunyoung Lee for 222 because you had to use LaTeX',
 'Like sure latex was a bitch to use, but you got the hang of it p quick',
@@ -75,6 +83,7 @@ function respond() {
       ocelot = /\.*pretty good\.*/i;
       fastInv = /\.*fast(-|\s)?inverse square root\.*/i;
       nanomachines = /\.nanomachines\.*/i;
+      jc = /\.*@jc\.*/i;
 	
 
   if(request.text && botRegex.test(request.text)) {
@@ -144,6 +153,10 @@ function respond() {
       this.res.writeHead(200);
       postMessage(17);
     this.res.end();
+    } else if (request.text && jc.test(request.text)) {
+      this.res.writeHead(200);
+      postMessage(18);
+      this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -206,6 +219,10 @@ function postMessage(option) {
   case 17:
 	botResponse = 'No Snake, The Nanomachines are functioning fine. It must be pycometric interferance from pycomantis!'
 	break;
+  case 18:
+	botResponse = jcPastas[Math.floor(Math.random() * jcPastas.length)];
+	break;
+		  
 		  
   }
 
