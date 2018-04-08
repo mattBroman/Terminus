@@ -18,13 +18,15 @@ const Oclelote = require('./commands/ocelote.js');
 const RNH = require('./commands/RNH.js');
 const Salami = require('./commands/salami.js');
 const WTF = require('./commands/wtf.js');
+const Bomb = require('./commands/bomb.js');
 
 
 
 const botID = process.env.BOT_ID;
 
 
-const commands = [Chase, Jc, Term, Nikk, Haha, Nicc, FastSqr, OwO, Buldge, Layluh, Lmao, Lorn, Malloc, Nanomachines, Np, Oclelote, RNH, Salami, WTF ];
+const commands = [Chase, Jc, Term, Nikk, Haha, Nicc, FastSqr, OwO, Buldge, Layluh, Lmao, Lorn, Malloc, Nanomachines, Np,
+                  Oclelote, RNH, Salami, WTF, Bomb ];
 
 let localMessage = function(request) {
   for (let i = 0; i <  commands.length; i++) {

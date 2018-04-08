@@ -146,11 +146,19 @@ Then navigate to `http://127.0.0.1:5000/` in a browser.
 
 ## All done! Go play around and make the bot your own.
 
+<<<<<<< HEAD
+
+# What did you do to Terminus?
+I made him not a 121 level of code anymore
+
+# How do I make commands?
+=======
 # __OH SHIT ITS ORGANIZED NOW__
 ## What did you do to Terminus?
 I made him not a 121 level of code anymore
 
 ## How do I make commands?
+>>>>>>> a54ad8515299d6c8d3e6ae62b2195d09c240cf46
 when you wanna make a new command for this bot you gonna make a new .js file in the commands folder with the following
 * a regex command for the bot the look
 * a function that returns a string.
@@ -160,7 +168,10 @@ exports.regex = your_regex;
 exports.message = your_function;
 ```  
 **IT HAS TO BE A FUNCTION NOT A STRING.**  
+<<<<<<< HEAD
+=======
 
+>>>>>>> a54ad8515299d6c8d3e6ae62b2195d09c240cf46
 if you dont do that your command wont work, the bot won't crash anymore but you'll be sad.  
   
 to add these to the bot your gonna do this
@@ -168,11 +179,18 @@ to add these to the bot your gonna do this
 ```javascript
 const MY_COMMAND = require('./commands/MY_COMMAND.js');
 ```  
+<<<<<<< HEAD
+* __DON'T FUCK THIS ONE UP OR YOU'LL CRASH THE BOT__  
+add it to the commands array and boom your done 
+
+# What if i want to test my bot?
+=======
 __DON'T FUCK THIS ONE UP OR YOU'LL CRASH THE BOT__  
 
 add it to the commands array and boom your done 
 
 ## What if i want to test my bot?
+>>>>>>> a54ad8515299d6c8d3e6ae62b2195d09c240cf46
 if you want to test the bot locally you need to get npm and do following
 * Run NPM install to grab the ｎｏｄｅ＿ｍｏｄｕｌｅｓ
 * run the server with node app.js
