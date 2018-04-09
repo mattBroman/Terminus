@@ -1,5 +1,5 @@
 const HTTPS        = require('https');
-const introMessage = 'I owe yall some beers'
+const introMessage = '@van'
 const errorMessage = 'That command\'s broken, probably Matt\'s fault'
 const Globals      = require('./globals.js')
 const Chase        = require('./commands/chase.js');
@@ -24,13 +24,15 @@ const WTF          = require('./commands/wtf.js');
 const Bomb         = require('./commands/bomb.js');
 const Die          = require('./commands/die.js');
 const Revive       = require('./commands/live.js');
+const Gachi        = require('./commands/van.js');
+const maybe2       = require('./commands/2.js')
 
 
 const botID = process.env.BOT_ID;
 Globals.alive = true;
 
 const commands = [Chase, Jc, Term, Nikk, Haha, Nicc, FastSqr, OwO, Buldge, Layluh, Lmao, Lorn, Malloc, Nanomachines, Np,
-                  Oclelote, RNH, Salami, WTF, Bomb, Die, Revive ];
+                  Oclelote, RNH, Salami, WTF, Bomb, Die, Revive, Gachi, maybe2 ];
 
 let localMessage = function(request) {
   for (let i = 0; i <  commands.length; i++) {
@@ -57,6 +59,7 @@ let respond = function() {
       }
     } catch(err) {
       console.log(errorMessage);
+      break;
     } 
   }
   this.res.end();
