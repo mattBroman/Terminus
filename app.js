@@ -23,8 +23,7 @@ let renderHTML = function (route, response) {
 app.use(bodyParser());
 app.get('/', (req, res) => renderHTML(htmlPath + 'index.html', res));
 app.post('/res', (req, res) => { 
-    bot.setMess(req.body.meme)
-    bot.respond();
+    bot.localMessage(req.body.meme);
     renderHTML(htmlPath +'index.html', res);
 });
 
