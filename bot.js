@@ -1,6 +1,6 @@
 const HTTPS        = require('https');
-const introMessage = 'err is not the same as error @matt'
-const errorMessage = 'That command\'s broken, probably Matt\'s fault'
+const introMessage = 'ye';
+const errorMessage = 'nop';
 const Globals      = require('./globals.js')
 const Chase        = require('./commands/chase.js');
 const Jc           = require('./commands/jc.js');
@@ -29,24 +29,27 @@ const Revive       = require('./commands/live.js');
 
 const botID = process.env.BOT_ID;
 Globals.alive = true;
+let testMess = undefined;
 
 
 const commands = [Chase, Jc, Term, Nikk, Haha, Nicc, FastSqr, OwO, Buldge, Layluh, Lmao, Lorn, Malloc, Nanomachines, Np,
                   Oclelote, RNH, Salami, WTF, Bomb, Die, Revive ];
 
-let respond = function(message) {
-  if (Globals.prod) {
-    let request = JSON.parse(this.req.chunks[0]);
-    message = request.txt;
-    this.res.writeHead(200);
-    commandParse(postMessage)
-    this.res.end();
-  } else {
-    commandParse(testMessage, message);
-  }
+let respond = function() {
+  Globals.prod ? commandParse(postMessage) : commandParse(testMessage);
 }
 
-let commandParse = function(oStream, input) {
+let setMess = function(mess) {
+  testMess = mess;
+}
+
+let commandParse = function(oStream) {
+  message = testMess;
+  if (Globals.prod) {
+    let request = JSON.parse(this.req.chunks[0])
+    message = request.txt
+    this.res.writeHead(200);
+  }
   for (let i = 0; i < commands.length; i++) {
     try {
       if (message && commands[i].regex.test(message)) { 
@@ -54,9 +57,13 @@ let commandParse = function(oStream, input) {
         break;
       }
     } catch(err) {
-      oStream(errorMessage);
+      console.log(errorMessage);
     } 
   }
+  if (Globals.prod) {
+    this.res.end();
+  }
+  message = undefined;
 }
 
 let testMessage = function(message) {
@@ -104,3 +111,4 @@ exports.respond = respond;
 exports.intro = postMessage(introMessage);
 exports.postMessage = postMessage;
 exports.testMessage = testMessage;
+exports.setMess = setMess;
