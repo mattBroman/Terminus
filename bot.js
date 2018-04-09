@@ -1,5 +1,5 @@
 const HTTPS        = require('https');
-const introMessage = '@AutisVim, you did this to me.'
+const introMessage = 'Matt is dumb.'
 const errorMessage = 'That command\'s broken, probably Matt\'s fault'
 const Globals      = require('./globals.js')
 const Chase        = require('./commands/chase.js');
@@ -37,24 +37,28 @@ let respond = function(message) {
 }
 
 let commandParse = function(oStream, input) {
-  let message = input
-  if (Globals.prod) {
-    let request = JSON.parse(this.req.chunks[0])
-    message = request.txt
-    this.res.writeHead(200);
-  }
-  for (let i = 0; i < commands.length; i++) {
-    try {
-      if (message && commands[i].regex.test(message)) { 
-        oStream(commands[i].message());
-        break;
-      }
-    } catch(err) {
-      oStream(errorMessage);
-    } 
-  }
-  if (Globals.prod) {
-    this.res.end();
+  try {
+    let message = input
+    if (Globals.prod) {
+      let request = JSON.parse(this.req.chunks[0])
+      message = request.txt
+      this.res.writeHead(200);
+    }
+    for (let i = 0; i < commands.length; i++) {
+      try {
+        if (message && commands[i].regex.test(message)) { 
+          oStream(commands[i].message());
+          break;
+        }
+      } catch(err) {
+        oStream(errorMessage);
+      } 
+    }
+    if (Globals.prod) {
+      this.res.end();
+    }
+  } catch(err) {
+    console.log(error);
   }
 }
 
