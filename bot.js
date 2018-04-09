@@ -1,5 +1,7 @@
 const HTTPS        = require('https');
-const introMessage = 'Redeployed bitches! Matt\'s gay for breaking me.'
+const introMessage = '@AutisVim, you did this to me.'
+const errorMessage = 'That command\'s broken, probably Matt\'s fault'
+const Globals      = require('./globals.js')
 const Chase        = require('./commands/chase.js');
 const Jc           = require('./commands/jc.js');
 const Term         = require('./commands/copypastas.js');
@@ -20,76 +22,84 @@ const RNH          = require('./commands/RNH.js');
 const Salami       = require('./commands/salami.js');
 const WTF          = require('./commands/wtf.js');
 const Bomb         = require('./commands/bomb.js');
+const Die          = require('./commands/die.js');
+const Revive       = require('./commands/live.js');
 
 
 const botID = process.env.BOT_ID;
-
+Globals.alive = true;
 
 const commands = [Chase, Jc, Term, Nikk, Haha, Nicc, FastSqr, OwO, Buldge, Layluh, Lmao, Lorn, Malloc, Nanomachines, Np,
-                  Oclelote, RNH, Salami, WTF, Bomb ];
+                  Oclelote, RNH, Salami, WTF, Bomb, Die, Revive ];
 
-let localMessage = function(request) {
-  for (let i = 0; i <  commands.length; i++) {
-    try {
-      if (request && commands[i].regex.test(request)) {
-        console.log(commands[i].message());
-        break;
-      }
-    } catch(err) {
-      console.log(err);
-    } 
-  }
+let respond = function(message) {
+  Globals.prod ? commandParse(postMessage) : commandParse(testMessage, message);
 }
 
-let respond = function() {
-  let request = JSON.parse(this.req.chunks[0])
-  this.res.writeHead(200);
+let commandParse = function(oStream, input) {
+  let message = input
+  if (Globals.prod) {
+    let request = JSON.parse(this.req.chunks[0])
+    message = request.txt
+    this.res.writeHead(200);
+  }
   for (let i = 0; i < commands.length; i++) {
     try {
-      if (request.text && commands[i].regex.test(request.text)) {
-        postMessage(commands[i].message());
+      if (message && commands[i].regex.test(message)) { 
+        oStream(commands[i].message());
         break;
       }
     } catch(err) {
-      console.log(err);
+      oStream(errorMessage);
     } 
   }
-  this.res.end();
+  if (Globals.prod) {
+    this.res.end();
+  }
 }
 
-function postMessage(botResponse) {
-  let options, body, botReq;		  
+let testMessage = function(message) {
+  if (Globals.alive) {
+    console.log(message);
+  }
+}
 
-  options = {
-    hostname: 'api.groupme.com',
-    path: '/v3/bots/post',
-    method: 'POST'
-  };
+let postMessage = function (botResponse) {
+  if (Globals.alive) {
+    let options, body, botReq;		  
 
-  body = {
-    "bot_id" : botID,
-    "text" : botResponse
-  };
+    options = {
+      hostname: 'api.groupme.com',
+      path: '/v3/bots/post',
+      method: 'POST'
+    };
 
-  console.log('sending ' + botResponse + ' to ' + botID);
+    body = {
+      "bot_id" : botID,
+      "text" : botResponse
+    };
 
-  botReq = HTTPS.request(options, function(res) {
-      if(res.statusCode == 202) {
-        //neat
-      } else {
-        console.log('rejecting bad status code ' + res.statusCode);
-      }
-  });
+    console.log('sending ' + botResponse + ' to ' + botID);
 
-  botReq.on('error', function(err) {
-    console.log('error posting message '  + JSON.stringify(err));
-  });
-  botReq.on('timeout', function(err) {
-    console.log('timeout posting message '  + JSON.stringify(err));
-  });
-  botReq.end(JSON.stringify(body));
+    botReq = HTTPS.request(options, function(res) {
+        if(res.statusCode == 202) {
+          //neat
+        } else {
+          console.log('rejecting bad status code ' + res.statusCode);
+        }
+    });
+
+    botReq.on('error', function(err) {
+      console.log('error posting message '  + JSON.stringify(err));
+    });
+    botReq.on('timeout', function(err) {
+      console.log('timeout posting message '  + JSON.stringify(err));
+    });
+    botReq.end(JSON.stringify(body));
+  }
 }
 
 exports.respond = respond;
-exports.localMessage = localMessage;
 exports.intro = postMessage(introMessage);
+exports.postMessage = postMessage;
+exports.testMessage = testMessage;

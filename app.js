@@ -4,6 +4,9 @@ let fs = require('fs')
 let app = express();
 let bodyParser = require('body-parser')
 let htmlPath = 'html/'
+let Globals = require('./globals.js');
+
+Globals.prod = false;
 
 let renderHTML = function (route, response) {
     fs.readFile(route, null, function(error, data) {
@@ -20,7 +23,7 @@ let renderHTML = function (route, response) {
 app.use(bodyParser());
 app.get('/', (req, res) => renderHTML(htmlPath + 'index.html', res));
 app.post('/res', (req, res) => { 
-    bot.localMessage(req.body.meme);
+    bot.respond(req.body.meme);
     renderHTML(htmlPath +'index.html', res);
 });
 

@@ -4,6 +4,9 @@ http        = require('http');
 director    = require('director');
 cool        = require('cool-ascii-faces');
 bot         = require('./bot.js');
+Globals     = require('./globals.js');
+
+Globals.prod = true;
 
 router = new director.http.Router({
   '/' : {
