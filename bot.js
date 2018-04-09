@@ -26,39 +26,36 @@ const Die          = require('./commands/die.js');
 const Revive       = require('./commands/live.js');
 
 
+
 const botID = process.env.BOT_ID;
 Globals.alive = true;
+
 
 const commands = [Chase, Jc, Term, Nikk, Haha, Nicc, FastSqr, OwO, Buldge, Layluh, Lmao, Lorn, Malloc, Nanomachines, Np,
                   Oclelote, RNH, Salami, WTF, Bomb, Die, Revive ];
 
 let respond = function(message) {
-  Globals.prod ? commandParse(postMessage) : commandParse(testMessage, message);
+  if (Globals.prod) {
+    let request = JSON.parse(this.req.chunks[0]);
+    message = request.txt;
+    this.res.writeHead(200);
+    commandParse(postMessage)
+    this.res.end();
+  } else {
+    commandParse(testMessage, message);
+  }
 }
 
 let commandParse = function(oStream, input) {
-  try {
-    let message = input
-    if (Globals.prod) {
-      let request = JSON.parse(this.req.chunks[0])
-      message = request.txt
-      this.res.writeHead(200);
-    }
-    for (let i = 0; i < commands.length; i++) {
-      try {
-        if (message && commands[i].regex.test(message)) { 
-          oStream(commands[i].message());
-          break;
-        }
-      } catch(err) {
-        oStream(errorMessage);
-      } 
-    }
-    if (Globals.prod) {
-      this.res.end();
-    }
-  } catch(err) {
-    console.log(err);
+  for (let i = 0; i < commands.length; i++) {
+    try {
+      if (message && commands[i].regex.test(message)) { 
+        oStream(commands[i].message());
+        break;
+      }
+    } catch(err) {
+      oStream(errorMessage);
+    } 
   }
 }
 
