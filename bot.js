@@ -1,5 +1,5 @@
 const HTTPS        = require('https');
-const introMessage = 'Matt is dumb.'
+const introMessage = 'err is not the same as error @matt'
 const errorMessage = 'That command\'s broken, probably Matt\'s fault'
 const Globals      = require('./globals.js')
 const Chase        = require('./commands/chase.js');
@@ -58,7 +58,7 @@ let commandParse = function(oStream, input) {
       this.res.end();
     }
   } catch(err) {
-    console.log(error);
+    console.log(err);
   }
 }
 
