@@ -1,6 +1,7 @@
-const HTTPS        = require('https');
-const introMessage = '@Matt check yo recursion next time plz'
-const errorMessage = 'That command\'s broken, probably Matt\'s fault'
+const HTTPS            = require('https');
+const introMessage     = '@Matt check yo recursion next time plz'
+const errorMessage     = 'That command\'s broken, probably Matt\'s fault'
+const recursionWarning = 'Y\'all got reursion in that command. be careful.'
 const Globals      = require('./globals.js')
 const Chase        = require('./commands/chase.js');
 const Jc           = require('./commands/jc.js');
@@ -30,6 +31,7 @@ const maybe2       = require('./commands/2.js')
 
 const botID = process.env.BOT_ID;
 Globals.alive = true;
+let lastMessage = null;
 
 const commands = [Chase, Jc, Term, Nikk, Haha, Nicc, FastSqr, OwO, Buldge, Layluh, Lmao, Lorn, Malloc, Nanomachines, Np,
                   Oclelote, RNH, Salami, WTF, Bomb, Die, Revive, Gachi, maybe2 ];
@@ -53,9 +55,14 @@ let respond = function() {
   this.res.writeHead(200);
   for (let i = 0; i < commands.length; i++) {
     try {
-      if (request.text && commands[i].regex.test(request.text)) { 
-        postMessage(commands[i].message());
-        break;
+      if (request.text && commands[i].regex.test(request.text)) {
+        if (request.txt !== lastMessage) {
+          lastMessage = commands[i].message()
+          postMessage(lastMessage);
+        } else {
+          postMessage(recursionWarning)
+          lastMessage = recursionWarning;
+        }
       }
     } catch(err) {
       console.log(errorMessage);
