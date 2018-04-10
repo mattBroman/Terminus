@@ -1,5 +1,5 @@
 const HTTPS        = require('https');
-const introMessage = '@van'
+const introMessage = '@Matt check yo recursion next time plz'
 const errorMessage = 'That command\'s broken, probably Matt\'s fault'
 const Globals      = require('./globals.js')
 const Chase        = require('./commands/chase.js');
