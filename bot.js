@@ -1,8 +1,8 @@
 const HTTPS            = require('https');
-const introMessage     = '@Bettati\'s Lectures , Nothing I\'m sentient' 
-const errorMessage     = 'That command\'s broken, probably Matt\'s fault'
-const recursionWarning = 'Y\'all got reursion in that command. be careful.'
-const Globals      = require('./globals.js')
+const introMessage     = '@Bettati\'s Lectures , Nothing I\'m sentient' ;
+const errorMessage     = 'That command\'s broken, probably Matt\'s fault';
+const recursionWarning = 'Y\'all got reursion in that command. be careful.';
+const Globals      = require('./globals.js');
 const Chase        = require('./commands/chase.js');
 const Jc           = require('./commands/jc.js');
 const Term         = require('./commands/copypastas.js');
