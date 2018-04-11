@@ -1,5 +1,5 @@
 const HTTPS            = require('https');
-const introMessage     = '@Matt check yo recursion next time plz'
+const introMessage     = '@Bettati\'s Lectures , Nothing I\'m sentient' 
 const errorMessage     = 'That command\'s broken, probably Matt\'s fault'
 const recursionWarning = 'Y\'all got reursion in that command. be careful.'
 const Globals      = require('./globals.js')
