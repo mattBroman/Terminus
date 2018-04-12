@@ -1,5 +1,5 @@
 const HTTPS            = require('https');
-const introMessage     = 'turned off because heroku can\' run a server. ;
+const introMessage     = 'turned off because heroku can\' run a server.' ;
 const errorMessage     = 'That command\'s broken, probably Matt\'s fault';
 const recursionWarning = 'Y\'all got reursion in that command. be careful.';
 const Globals      = require('./globals.js');
