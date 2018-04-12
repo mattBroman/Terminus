@@ -11,7 +11,7 @@ const htmlPath = 'html/'
 Globals.prod = true;
 
 let customText = function() {
-  Globals.renderHtml(htmlPath + 'index.html', res)
+  Globals.renderHTML(htmlPath + 'index.html', res)
 }
 
 router = new director.http.Router({
