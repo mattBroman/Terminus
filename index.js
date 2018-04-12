@@ -5,6 +5,8 @@ director    = require('director');
 cool        = require('cool-ascii-faces');
 bot         = require('./bot.js');
 Globals     = require('./globals.js');
+const htmlPath = 'html/'
+
 
 Globals.prod = true;
 
@@ -12,8 +14,15 @@ router = new director.http.Router({
   '/' : {
     post: bot.respond,
     get: ping
+  },
+  '/admin': {
+    get: customText
   }
 });
+
+let customText = function() {
+  Globals.renderHtml(htmlPath + 'index.html')
+}
 
 server = http.createServer(function (req, res) {
   req.chunks = [];
