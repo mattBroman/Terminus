@@ -10,6 +10,10 @@ const htmlPath = 'html/'
 
 Globals.prod = true;
 
+let customText = function() {
+  Globals.renderHtml(htmlPath + 'index.html')
+}
+
 router = new director.http.Router({
   '/' : {
     post: bot.respond,
@@ -19,10 +23,6 @@ router = new director.http.Router({
     get: customText
   }
 });
-
-let customText = function() {
-  Globals.renderHtml(htmlPath + 'index.html')
-}
 
 server = http.createServer(function (req, res) {
   req.chunks = [];
