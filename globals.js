@@ -1,3 +1,5 @@
+let fs = require('fs');
+
 let renderHTML = function (route, response) {
     fs.readFile(route, null, function(error, data) {
         if (error) {
