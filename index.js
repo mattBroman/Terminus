@@ -4,11 +4,23 @@ http        = require('http');
 director    = require('director');
 cool        = require('cool-ascii-faces');
 bot         = require('./bot.js');
+Globals     = require('./globals.js');
+const htmlPath = 'html/'
+
+
+Globals.prod = true;
+
+let customText = function() {
+  Globals.renderHTML(htmlPath + 'index.html', res)
+}
 
 router = new director.http.Router({
   '/' : {
     post: bot.respond,
     get: ping
+  },
+  '/admin': {
+    get: customText
   }
 });
 

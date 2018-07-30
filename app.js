@@ -4,6 +4,9 @@ let fs = require('fs')
 let app = express();
 let bodyParser = require('body-parser')
 let htmlPath = 'html/'
+let Globals = require('./globals.js');
+
+Globals.prod = false;
 
 let renderHTML = function (route, response) {
     fs.readFile(route, null, function(error, data) {
